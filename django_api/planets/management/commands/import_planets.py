@@ -7,11 +7,20 @@ class Command(BaseCommand):
     help = 'Imports planets from SWAPI GraphQL and stores them in the database'
 
     def handle(self, *args, **kwargs):
-        url = "https://swapi-graphql.netlify.app/.netlify/functions/index?query=query%20Query%20{allPlanets{planets{name%20population%20terrains%20climates}}}"
-
+        url = (
+            "https://swapi-graphql.netlify.app/.netlify/functions/index"
+            "?query=query%20Query%20"
+            "{allPlanets{planets{name%20population%20terrains%20climates}}}"
+        )
+        
         response = requests.get(url)
 
-        planets_data = response.json().get('data', {}).get('allPlanets', {}).get('planets', [])
+        planets_data = (
+            response.json()
+            .get('data', {})
+            .get('allPlanets', {})
+            .get('planets', [])
+        )
 
         for item in planets_data:
             name = item.get("name")
@@ -27,4 +36,4 @@ class Command(BaseCommand):
                 }
             )
 
-        self.stdout.write(self.style.SUCCESS(f"Imported planets."))
+        self.stdout.write(self.style.SUCCESS("Imported planets."))
