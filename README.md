@@ -16,21 +16,23 @@ A simple Django REST API to load planet data from the GraphQL API, store it in a
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/ntd-django-challenge.git
+git clone https://github.com/souzamarlon/ntd-django-challenge.git
 cd ntd-django-challenge/django_api
-````
+```
 
 ### 2. Build and start the containers
+
 ```bash
 docker compose up --build -d
-````
+```
 
 ### 3. Apply migrations, create superuser, and load planets
 
 You can run all setup steps with a single command using the Makefile:
+
 ```bash
 make install
-````
+```
 
 This will:
 
@@ -41,26 +43,29 @@ Prompt you to create a superuser
 Import planet data from SWAPI
 
 ### 4. Access the app
-````bash
+
+```bash
 API Root: http://localhost:8000/planets/
 
 Admin Panel: http://localhost:8000/admin/
-````
+```
 
 ### 🧪 Running Tests
-````bash
+
+```bash
 docker compose run --rm web pytest
-````
+```
 
 ### 🤖 API Endpoints
 
 Example endpoint:
-````bash
+
+```bash
 GET /planets/planet/
 POST /planets/planet/
 PUT /planets/planet/<id>/
 DELETE /planets/planet/<id>/
-````
+```
 
 📬 Contact
 
